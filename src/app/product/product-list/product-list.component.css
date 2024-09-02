@@ -1,0 +1,24 @@
+.product-card {
+  max-width: 150px;
+
+}
+.card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+mat-card {
+  box-shadow: 0 5px 8px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease-out;
+  cursor: pointer;
+
+}
+mat-card:hover{
+  transform: scale(1.02);
+}
+h2{
+  margin-left: 50px;
+}
+.sort-dropdown{
+margin-left: 20px;
+}
