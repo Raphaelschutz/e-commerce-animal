@@ -1,26 +1,60 @@
 <div class="container-sm">
-<h1>Your cart</h1>
+  <!-- Conteneur principal de petite taille (bootstrap "container-sm") -->
 
-<mat-card>
-  <mat-list>
-    <mat-list-item *ngFor="let item of cartItems">
-      <span matListItemTitle>{{item.name}}</span>
-      <span matListItemLine>{{item.price | currency:'EUR'}}</span>
-    </mat-list-item>
+  <h1>Your cart</h1>
+  <!-- Titre de la page affichant "Your cart" -->
 
-    <mat-list-item>
-      <span class="price" matListItemTitle>Total (EUR)</span>
-      <span class="price" matListItemLine>{{totalPrice | currency:'EUR'}}</span>
-    </mat-list-item>
+  <mat-card>
+    <!-- Composant Angular Material pour afficher le contenu du panier dans une carte stylée -->
 
-    <mat-list-item class="text-right">
-      <button mat-flat-button (click)="clearCart()">Clear</button>
-    </mat-list-item>
-    <mat-list-item class="text-right">
-      <button mat-raised-button color="accent" (click)="checkout()">Checkout</button>
-    </mat-list-item>
+    <mat-list>
+      <!-- Liste Material Design pour afficher les éléments du panier -->
 
-   </mat-list>
-</mat-card>
+      <mat-list-item *ngFor="let item of cartItems">
+        <!-- Boucle *ngFor pour afficher chaque produit dans le panier.
+             Chaque élément de la liste correspond à un produit du panier. -->
+
+        <span matListItemTitle>{{item.name}}</span>
+        <!-- Affiche le nom du produit. Utilisation du binding pour insérer dynamiquement la valeur de `item.name`. -->
+
+        <span matListItemLine>{{item.price | currency:'EUR'}}</span>
+        <!-- Affiche le prix du produit, formaté en euros grâce au pipe `currency`. -->
+
+      </mat-list-item>
+
+      <mat-list-item>
+        <!-- Élement de liste pour afficher le prix total du panier -->
+
+        <span class="price" matListItemTitle>Total (EUR)</span>
+        <!-- Titre "Total (EUR)" -->
+
+        <span class="price" matListItemLine>{{totalPrice | currency:'EUR'}}</span>
+        <!-- Affiche le prix total du panier, formaté en euros.
+             `totalPrice` est une propriété calculée dans le composant Angular. -->
+
+      </mat-list-item>
+
+      <mat-list-item class="text-right">
+        <!-- Bouton pour vider le panier, aligné à droite grâce à la classe `text-right` -->
+
+        <button mat-flat-button (click)="clearCart()">Clear</button>
+        <!-- Bouton de type flat (plat) avec la méthode `clearCart()` liée à l'événement click.
+             `clearCart()` est une méthode du composant Angular qui vide le panier. -->
+      </mat-list-item>
+
+      <mat-list-item class="text-right">
+        <!-- Bouton pour passer à la caisse, aligné à droite -->
+
+        <button mat-raised-button color="accent" (click)="checkout()">Checkout</button>
+        <!-- Bouton de type raised (relief) avec une couleur accentuée.
+             La méthode `checkout()` est appelée au clic pour initier le processus de paiement. -->
+      </mat-list-item>
+
+    </mat-list>
+    <!-- Fin de la liste des éléments du panier -->
+
+  </mat-card>
+  <!-- Fin de la carte contenant la liste du panier -->
 
 </div>
+<!-- Fin du conteneur principal -->

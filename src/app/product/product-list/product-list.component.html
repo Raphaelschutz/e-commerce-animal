@@ -1,26 +1,35 @@
-
-
 <div class="container">
 
-<h2>Our latest collection</h2>
+  <!-- Titre de la section de la collection -->
+  <h2>Our latest collection</h2>
 
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Search">
-</mat-form-field>
-<mat-form-field class="sort-dropdown">
-  <mat-select placeholder="Sort" (selectionChange)="sortProduct($event.value) ">
-    <mat-option value="priceLowHigh">Price: Low to High</mat-option>
-    <mat-option value="priceHighLow">Price: High to Low</mat-option>
-  </mat-select>
-</mat-form-field>
+  <!-- Champ de formulaire pour la recherche -->
+  <mat-form-field>
+    <!-- Champ de saisie pour rechercher des produits, la méthode applyFilter est appelée à chaque fois qu'une touche est relâchée -->
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search">
+  </mat-form-field>
 
+  <!-- Menu déroulant pour le tri des produits -->
+  <mat-form-field class="sort-dropdown">
+    <!-- Sélecteur pour choisir le type de tri, la méthode sortProduct est appelée lors de la sélection d'une option -->
+    <mat-select placeholder="Sort" (selectionChange)="sortProduct($event.value)">
+      <mat-option value="priceLowHigh">Price: Low to High</mat-option>
+      <mat-option value="priceHighLow">Price: High to Low</mat-option>
+    </mat-select>
+  </mat-form-field>
 
+  <!-- Conteneur pour les cartes de produits, disposition flexible avec Angular Flex Layout -->
   <div class="card" fxLayout="row wrap" fxLayoutGap="50px grid">
 
+    <!-- Boucle *ngFor pour afficher chaque produit filtré -->
     <div *ngFor="let product of filteredProduct">
 
-      <mat-card class="product-card"  (click)="addToCart(product)">
-        <img mat-card-image src="assets/images/{{product.image_url}}" >
+      <!-- Carte Matérial pour chaque produit, avec une image, un titre et un prix -->
+      <!-- Le clic sur la carte ajoute le produit au panier via la méthode addToCart -->
+      <mat-card class="product-card" (click)="addToCart(product)">
+        <!-- Image du produit, tirée d'un dossier local 'assets/images/' -->
+        <img mat-card-image src="assets/images/{{product.image_url}}">
+        <!-- Contenu de la carte : titre du produit et prix formaté en euros -->
         <mat-card-content>
           <mat-card-title>{{product.name}}</mat-card-title>
           <mat-card-subtitle>{{product.price | currency: 'EUR'}}</mat-card-subtitle>
@@ -32,4 +41,3 @@
   </div>
 
 </div>
-
